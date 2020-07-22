@@ -1,0 +1,25 @@
+<h1> Library </h1>
+
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<div class="container">
+  <table class="table" border='1'>
+    <thead>
+      <tr>
+        <th>Library Id</th>
+        <th>Library Name</th>
+        <th>Library Discription</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--   for (Library lib: libraries) {  -->
+              <tr *ngFor="let library of libraries">
+                <td>{{library.id}}</td>
+                <td><a routerLink="{{library.id}}">{{library.libraryName}}</a></td>
+                <td>{{library.description}}</td>
+              </tr>
+      <!-- } -->
+    </tbody>
+
+  </table>
+</div>

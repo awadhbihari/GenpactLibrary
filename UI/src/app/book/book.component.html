@@ -1,0 +1,43 @@
+<H1>Book</H1>
+
+<div class="container">
+  <div class="alert alert-warning" *ngIf="bookForm.dirty && bookForm.invalid">Enter valid values</div>
+  <div class="alert alert-warning" *ngIf="bookForm.dirty && publishDate.invalid">Enter valid Publish Date</div>
+  <div class="alert alert-warning" *ngIf="bookForm.dirty && description.invalid">Enter atleast 5 characters in Description</div>
+  <div class="alert alert-warning" *ngIf="bookForm.dirty && bookName.invalid">Enter atleast 5 characters in book name</div>
+
+  <form (ngSubmit)="!bookForm.invalid && saveBook()" #bookForm="ngForm">
+    <fieldset class="form-group">
+      <label>Library Name</label>
+      <input type="text" #library.libraryName="ngModel" 
+            [(ngModel)]="library.libraryName" class="form-control" 
+                name="library" disabled>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Book Name</label>
+      <input type="text" #bookName="ngModel" 
+            [(ngModel)]="book.bookName" class="form-control" 
+                name="bookName" required="required" minlength="5">
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Description</label>
+      <input type="text" #description="ngModel" 
+            [(ngModel)]="book.description" class="form-control" 
+                name="description" required="required" minlength="5">
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Author</label>
+      <input type="text" #author="ngModel" 
+            [(ngModel)]="book.author" class="form-control" 
+                name="author" required="required" minlength="5">
+    </fieldset>
+    <fieldset class="form-group">
+        <label>Publish Date</label>
+        <input type="date" #publishDate="ngModel"
+        [ngModel]="book.publishDate | date:'yyyy-MM-dd' "
+        (ngModelChange)="book.publishDate = $event"
+        class="form-control" name="publishDate" required="required" >
+    </fieldset>
+    <button type="submit" class="btn btn-success">Save</button>
+  </form>  
+</div>

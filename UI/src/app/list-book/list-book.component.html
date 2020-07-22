@@ -1,0 +1,38 @@
+<h1> Book </h1>
+
+<div class="alert alert-success" *ngIf='message'>{{message}}</div>
+
+<div class="container">
+  <table class="table" border='1'>
+    <thead>
+      <tr>
+        <th>BookName</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Publish Date</th>
+        <th>Library</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+ 
+              <tr *ngFor="let book of books">
+                <td>{{book.bookName}}</td>
+                <td>{{book.description}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.publishDate | date | uppercase}}</td>
+                <td>{{library.libraryName}}</td>
+                <td><button (click)="updateBook(book.id)" class="btn btn-success">Update</button></td>
+                <td><button (click)="deleteBook(book.id)" class="btn btn-warning">Delete</button></td>
+              </tr>
+
+    </tbody>
+
+  </table>
+
+  <div class="row">
+      <button (click)="addBook()" class="btn btn-success">Add</button>
+  </div>
+
+</div>
